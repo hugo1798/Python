@@ -6,10 +6,10 @@ class Cliente:
         self._membresia = membresia
 
     def __str__(self):
-        return (f'ID {self._id},'
-                f'Nombre {self._nombre},'
-                f'Apellido {self._apellido},'
-                f'Membresia {self._membresia}')
+        return (f'ID: {self._id}, '
+                f'Nombre: {self._nombre}, '
+                f'Apellido: {self._apellido}, '
+                f'Membresia: {self._membresia}')
 
     @property
     def id(self):

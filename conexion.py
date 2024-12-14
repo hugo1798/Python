@@ -14,6 +14,7 @@ class Conexion:
     def obtener_pool(cls):
         if cls.pool is None:
             try:
+                print('Obteniendo pool')
                 cls.pool = pooling.MySQLConnectionPool(
                     pool_name=cls.POOL_NAME,
                     pool_size=cls.POOL_SIZE,
@@ -23,8 +24,8 @@ class Conexion:
                     user=cls.USERNAME,
                     password=cls.PASSWORD
                 )
-                print(f'Nombre del pool {cls.pool.pool_name}')
-                print(f'Tamano del pool {cls.pool.pool_size}')
+                print('Pool obtenido')
+                print(f'Nombre del pool: {Conexion.pool.pool_name}')
                 return cls.pool
             except Error as e:
                 print(f'Ocurrio un error al obtener el pool de conexiones: {e}')
