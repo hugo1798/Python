@@ -7,7 +7,7 @@ class Conexion:
     DB_PORT = ''
     HOST = ''
     POOL_SIZE = 5
-    POOL_NAME = ''
+    POOL_NAME = 'zona_fit_pool'
     pool = None
 
     @classmethod
