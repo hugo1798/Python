@@ -21,7 +21,36 @@
       <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
         <!-- Contenedor del formulario -->
         <div class="border rounded-3 p-2">
-
+          <form action="/guardar" method="POST" autocomplete="off">
+            {{forma.csrf_token}}
+              {{forma.id()}}
+            <div class="form-floating py-2">
+              <!-- En la siguiente parte de codigo estamos utilizando las variables que traemos desde app las cuales
+              utilizan la extension de wtf forms. Esta extension convierte de manera automatica los atributos de la
+              clase de cliente forma en elementos HTML -->
+              {{forma.nombre(class='form-control', placeholder='Nombre')}} <!-- Elemento de tipo input -->
+              {{forma.nombre.label}}
+            </div>
+            <div class="form-floating py-2">
+<!--              <input type="text" class="form-control" id="apellido" placeholder="Apellido"/>-->
+<!--              <label for="apellido">Apellido</label>-->
+              {{forma.apellido(class='form-control', placeholder='Apellido')}} <!-- Elemento de tipo input -->
+              {{forma.apellido.label}}
+            </div>
+            <div class="form-floating py-2">
+<!--              <input type="number" class="form-control" id="membresia" placeholder="Membresia"/>-->
+<!--              <label for="membresia">Membresia</label>-->
+              {{forma.membresia(class='form-control', placeholder='Membresia')}} <!-- Elemento de tipo input -->
+              {{forma.membresia.label}}
+            </div>
+            <div class="text-center py-2">
+<!--              <button type="submit" class="btn btn-warning btn-sm me-3">Guardar</button>-->
+              {{forma.guardar(class='btn btn-warning btn-sm me-3')}}
+              <a href="/Limpiar" class="btn btn-danger btn-sm">
+                Limpiar
+              </a>
+            </div>
+          </form>
         </div>
         <!-- Contenedor de listado de clientes -->
         <div class="border rounded-3 p-2">
@@ -37,7 +66,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for cliente in clientes_db %}
+              {% for cliente in clientes %}
               <tr>
                 <td>{{cliente.id}}</td>
                 <td>{{cliente.nombre}}</td>
@@ -45,12 +74,16 @@
                 <td>{{cliente.membresia}}</td>
                 <td class="text-center">
                   <div>
-                    <i class="bi bi-pencil"></i>
+                    <a href="/editar/{{cliente.id}}" class="btn btn-secondary btn-sm me-3">
+                      <i class="bi bi-pencil"></i>
+                    </a>
                   </div>
                 </td>
                 <td class="text-center">
                   <div>
-                    <i class="bi bi-trash"></i>
+                    <a href="/eliminar/{{cliente.id}}" class="btn btn-danger btn-sm">
+                      <i class="bi bi-trash"></i>
+                    </a>
                   </div>
                 </td>
               </tr>
