@@ -4,4 +4,4 @@ The main technologies used in this project are:
 - MySql
 - Tkinter
 - Bootstrap
-Project is still under development.
+Project is finished but still under updates.
